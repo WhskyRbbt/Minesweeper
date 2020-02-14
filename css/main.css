@@ -1,5 +1,5 @@
 body {
-background-color:gold;
+background-color:rgb(247, 222, 85);
 background-image: url(/images/GA.png);
 background-repeat: no-repeat;
 background-position: top;
@@ -35,9 +35,10 @@ h1{
 }
 
 #map tr td{
+  font-family: 'Righteous', cursive;
   color: red;
-  font-family: 'Permanent Marker', cursive;
   font-size: 2vmin;
+  font-weight: bold;
   background: #91e;
   border: 1px solid #FF8504;
   width: 75px;

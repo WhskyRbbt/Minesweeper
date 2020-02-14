@@ -24,10 +24,8 @@ let clickHandeler = function(e) {
     return cellChoice(e.target)
 }
 
-
-
 function addBombs() {
-    for (let i = 0; i <=  10; i++) {
+    for (let i = 0; i <=  6; i++) {
         let row = Math.floor(Math.random() * 10);
         let col = Math.floor(Math.random() * 10);
         let cell = map.rows[row].cells[col];
@@ -35,10 +33,6 @@ function addBombs() {
         if (mapChecker) cell.innerHTML = "X";
     }
 }
-
-
-
-
 
 function displayBombs() {
     for (let i=0; i<10; i++) {
@@ -59,7 +53,6 @@ function cellChoice(cell) {
       let cells = Array.from(noMoClicks.getElementsByTagName('td'));
 
       for (i = 0; i < cells.length; i++) {
-          console.log(cells[i])
           cells[i].removeEventListener('click', clickHandeler);
       }
 
@@ -73,19 +66,19 @@ function cellChoice(cell) {
           if (map.rows[i].cells[j].getAttribute("hasBomb") === "true") bombCount++;
         }
       }
-      cell.innerHTML = bombCount > 0 ? bombCount : `<td hasbomb="false" id="invisible">${bombCount}</td>`;
+      cell.innerHTML = bombCount;
        { 
           if (bombCount === 0) { 
           for (let i = Math.max(cellRow-1,0); i <= Math.min(cellRow+1,9); i++) {
               for(let j = Math.max(cellCol-1,0); j <= Math.min(cellCol+1,9); j++) {
-              if (map.rows[i].cells[j].innerHTML === "") cellChoice(map.rows[i].cells[j]);
-                  }
-              }
-          }
-      }
-      isGameOver();
+                if (map.rows[i].cells[j].innerHTML === "") cellChoice(map.rows[i].cells[j]);
+                    }
+                }
+            }
+        }
+    isGameOver();
     }
-  }
+}
 
 function isGameOver() {
   let noMoreMoves = true;
