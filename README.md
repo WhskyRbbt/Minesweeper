@@ -29,4 +29,4 @@ Future itterations will hopefully include:
   Check out the game so far...
   ![Win](/images/Win.png "Win Image")
   ![Loss](/images/Loss.png "Loss Image")
-  ![New Game](images/New Game.png "New Game Image")
+  ![New Game](images/NewGame.png "New Game Image")
