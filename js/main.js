@@ -25,7 +25,7 @@ let clickHandeler = function(e) {
 }
 
 function addBombs() {
-    for (let i = 0; i <=  6; i++) {
+    for (let i = 0; i <=  3; i++) {
         let row = Math.floor(Math.random() * 10);
         let col = Math.floor(Math.random() * 10);
         let cell = map.rows[row].cells[col];
@@ -35,8 +35,8 @@ function addBombs() {
 }
 
 function displayBombs() {
-    for (let i=0; i<10; i++) {
-      for(let j=0; j<10; j++) {
+    for (let i = 0; i < 10; i++) {
+      for(let j = 0; j < 10; j++) {
         let cell = map.rows[i].cells[j];
         if (cell.getAttribute("hasBomb")==="true") cell.className="bomb";
       }
@@ -61,21 +61,21 @@ function cellChoice(cell) {
       let bombCount = 0;
       let cellRow = cell.parentNode.rowIndex;
       let cellCol = cell.cellIndex;
-      for (let i = Math.max(cellRow-1,0); i <= Math.min(cellRow+1,9); i++) {
-        for(let j = Math.max(cellCol-1,0); j <= Math.min(cellCol+1,9); j++) {
+      for (let i = Math.max(cellRow -1, 0); i <= Math.min(cellRow +1, 9); i++) {
+        for(let j = Math.max(cellCol -1, 0); j <= Math.min(cellCol +1, 9); j++) {
           if (map.rows[i].cells[j].getAttribute("hasBomb") === "true") bombCount++;
         }
       }
       cell.innerHTML = bombCount;
-       { 
+        
           if (bombCount === 0) { 
-          for (let i = Math.max(cellRow-1,0); i <= Math.min(cellRow+1,9); i++) {
-              for(let j = Math.max(cellCol-1,0); j <= Math.min(cellCol+1,9); j++) {
+          for (let i = Math.max(cellRow -1, 0); i <= Math.min(cellRow +1, 9); i++) {
+              for(let j = Math.max(cellCol -1 , 0); j <= Math.min(cellCol +1, 9); j++) {
                 if (map.rows[i].cells[j].innerHTML === "") cellChoice(map.rows[i].cells[j]);
                     }
                 }
             }
-        }
+        
     isGameOver();
     }
 }
