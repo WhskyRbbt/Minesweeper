@@ -33,6 +33,8 @@ Future itterations will hopefully include:
   A win overlay that shows random pic of Kobe highlights.
   Randomizing the color scheme to match away game colors, and home game colors alternately. 
   Rewrite the code to be more efficient.
+  Add Difficulty options 
+  Add Bomb count number inptut
   
 
   ![Win](/images/Win.png "Win Image")
