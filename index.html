@@ -1,140 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <title>Minesweeper</title>
 </head>
 <body>
-    <h1>Minesweeper</h1>
-        </br>
-        <h2>The World's Most ANNOYING Game!</h2>
-        <div class="map">
-        </div>
-    <table id="board">
-        <tr>           
-            <td class="box" id="00"></td>
-            <td class="box" id="10"></td>
-            <td class="box" id="20"></td>
-            <td class="box" id="30"></td>
-            <td class="box" id="40"></td>
-            <td class="box" id="50"></td>
-            <td class="box" id="60"></td>
-            <td class="box" id="70"></td>
-            <td class="box" id="80"></td>
-            <td class="box" id="90"></td>
-        </tr>
-        <tr>
-            <td class="box" id="01"></td>
-            <td class="box" id="11"></td>
-            <td class="box" id="21"></td>
-            <td class="box" id="31"></td>
-            <td class="box" id="41"></td>
-            <td class="box" id="51"></td>
-            <td class="box" id="61"></td>
-            <td class="box" id="71"></td>
-            <td class="box" id="81"></td>
-            <td class="box" id="91"></td>
-        </tr>
-        <tr>           
-            <td class="box" id="02"></td>
-            <td class="box" id="12"></td>
-            <td class="box" id="22"></td>
-            <td class="box" id="32"></td>
-            <td class="box" id="42"></td>
-            <td class="box" id="52"></td>
-            <td class="box" id="62"></td>
-            <td class="box" id="72"></td>
-            <td class="box" id="82"></td>
-            <td class="box" id="92"></td>
-        </tr>
-        <tr>
-            <td class="box" id="03"></td>
-            <td class="box" id="13"></td>
-            <td class="box" id="23"></td>
-            <td class="box" id="33"></td>
-            <td class="box" id="43"></td>
-            <td class="box" id="53"></td>
-            <td class="box" id="63"></td>
-            <td class="box" id="73"></td>
-            <td class="box" id="83"></td>
-            <td class="box" id="93"></td>
-        </tr>
-        <tr>            
-            <td class="box" id="04"></td>
-            <td class="box" id="14"></td>
-            <td class="box" id="24"></td>
-            <td class="box" id="34"></td>
-            <td class="box" id="44"></td>
-            <td class="box" id="54"></td>
-            <td class="box" id="64"></td>
-            <td class="box" id="74"></td>
-            <td class="box" id="84"></td>
-            <td class="box" id="94"></td>
-        </tr>
-        <tr>
-            <td class="box" id="05"></td>
-            <td class="box" id="15"></td>
-            <td class="box" id="25"></td>
-            <td class="box" id="35"></td>
-            <td class="box" id="45"></td>
-            <td class="box" id="55"></td>
-            <td class="box" id="65"></td>
-            <td class="box" id="75"></td>
-            <td class="box" id="85"></td>
-            <td class="box" id="95"></td>
-        </tr>
-        <tr>            
-            <td class="box" id="06"></td>
-            <td class="box" id="16"></td>
-            <td class="box" id="26"></td>
-            <td class="box" id="36"></td>
-            <td class="box" id="46"></td>
-            <td class="box" id="56"></td>
-            <td class="box" id="66"></td>
-            <td class="box" id="76"></td>
-            <td class="box" id="86"></td>
-            <td class="box" id="96"></td>
-        </tr>
-        <tr>
-            <td class="box" id="07"></td>
-            <td class="box" id="17"></td>
-            <td class="box" id="27"></td>
-            <td class="box" id="37"></td>
-            <td class="box" id="47"></td>
-            <td class="box" id="57"></td>
-            <td class="box" id="67"></td>
-            <td class="box" id="77"></td>
-            <td class="box" id="87"></td>
-            <td class="box" id="97"></td>
-        </tr>           
-        <tr>
-            <td class="box" id="08"></td>
-            <td class="box" id="18"></td>
-            <td class="box" id="28"></td>
-            <td class="box" id="38"></td>
-            <td class="box" id="48"></td>
-            <td class="box" id="58"></td>
-            <td class="box" id="68"></td>
-            <td class="box" id="78"></td>
-            <td class="box" id="88"></td>
-            <td class="box" id="98"></td>
-        </tr>
-        </tr>
-            <td class="box" id="09"></td>
-            <td class="box" id="19"></td>
-            <td class="box" id="29"></td>
-            <td class="box" id="39"></td>
-            <td class="box" id="49"></td>
-            <td class="box" id="59"></td>
-            <td class="box" id="69"></td>
-            <td class="box" id="79"></td>
-            <td class="box" id="89"></td>
-            <td class="box" id="99"></td>
-        <tr>
-            <button type="reset" value="reset" id="restart">Restart Game</button>
-    </table>
+    <H1>Minesweeper</H1>
+    </br>
+    <h2>The World's Most ANNOYING Game!</h2>
+    <table id="map"></table>
+    <button onclick = "init();">RESET</button>
+    <div id = "win_loss"></div>
     <script src="js/main.js"></script>
 </body>
 </html>

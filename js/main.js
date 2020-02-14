@@ -1,82 +1,105 @@
 
-// Variables
-let map = [];
-const COLS = 10;
-const ROWS = 10;
-const BOMBS = 10;
-const bomb = [];
-const hasMine = false;
+const map = document.getElementById("map");
+let mapChecker = false;
+let message = document.getElementById('win_loss');
 
 
-// function newGame() {
-//     let reset = document.getElementById('restart');
-//     reset.addEventListener('click', addMines())
-// }console.log(newGame)
-// newGame();
-    
-function addMines () {
-    let x;
-    let y;
-    for (let i = 0; i < BOMBS; i++) {      
-        x = Math.floor(Math.random() * Math.floor(COLS))
-        y = Math.floor(Math.random() * Math.floor(ROWS)) 
-        let mineLocation = `${x}` + `${y}`;
-        let placeMine = bomb.push(mineLocation);
-        console.log("this is ", mineLocation);   
-    }
-    // console.log("BOMB ", bomb)
-    // establish bomb id
-    for (let j = 0; j < bomb.length; j++) {
-        let markBomb = document.getElementById(bomb[j]);
-        markBomb.setAttribute('hasMine','true');
-
-        markBomb.innerHTML = "<img src='/images/bomb.png' width='100%' height='100%' verticle-align='center'>";
-        // console.log("MARK BOMB ", markBomb);
-
-    }
-}addMines();
-
-function clickCell(cell) {
-  //Check if the end-user clicked on a mine
-  if (cell.getAttribute("hasMine")==="true") {
-    revealMines();
-    // write function to reveal  mine
-    // alert("Game Over");
-  } else {
-    cell.className="clicked";
-    //Count and display the number of adjacent mines
-    var mineCount=0;
-    var cellRow = cell.parentNode.rowIndex;
-    var cellCol = cell.cellIndex;
-    //alert(cellRow + " " + cellCol);
-    for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-      for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-        if (map.rows[i].cells[j].getAttribute("hasMine")=="true") mineCount++;
+function init() {
+    map.innerHTML = "";
+    for (let i = 0; i < 10; i++) {
+      row = map.insertRow(i);
+      for (let j = 0; j < 10; j++) {
+        cell = row.insertCell(j);
+        cell.addEventListener('click', clickHandeler)
+        let bomb = document.createAttribute("hasBomb");       
+        bomb.value = "false";             
+        cell.setAttributeNode(bomb);
+        message.innerHTML = "";
       }
     }
-    cell.innerHTML=mineCount;
-    if (mineCount==0) { 
-      //Reveal all adjacent cells as they do not have a mine
-      for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-        for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-          //Recursive Call
-          if (map.rows[i].cells[j].innerHTML=="") clickCell(map.rows[i].cells[j]);
+    addBombs();
+}
+
+let clickHandeler = function(e) {
+    return cellChoice(e.target)
+}
+
+
+
+function addBombs() {
+    for (let i = 0; i <=  10; i++) {
+        let row = Math.floor(Math.random() * 10);
+        let col = Math.floor(Math.random() * 10);
+        let cell = map.rows[row].cells[col];
+        cell.setAttribute("hasBomb", "true");
+        if (mapChecker) cell.innerHTML = "X";
+    }
+}
+
+
+
+
+
+function displayBombs() {
+    for (let i=0; i<10; i++) {
+      for(let j=0; j<10; j++) {
+        let cell = map.rows[i].cells[j];
+        if (cell.getAttribute("hasBomb")==="true") cell.className="bomb";
+      }
+    }
+}
+
+function cellChoice(cell) {
+    if (cell.getAttribute("hasBomb") === "true") {
+      displayBombs();
+
+      let loss = document.getElementById('win_loss');
+      loss.innerHTML = "Sorry, you got </br>* 'SPLODED! *";
+      let noMoClicks = document.getElementById('map');
+      let cells = Array.from(noMoClicks.getElementsByTagName('td'));
+
+      for (i = 0; i < cells.length; i++) {
+          console.log(cells[i])
+          cells[i].removeEventListener('click', clickHandeler);
+      }
+
+    } else {
+      cell.className = "picked";
+      let bombCount = 0;
+      let cellRow = cell.parentNode.rowIndex;
+      let cellCol = cell.cellIndex;
+      for (let i = Math.max(cellRow-1,0); i <= Math.min(cellRow+1,9); i++) {
+        for(let j = Math.max(cellCol-1,0); j <= Math.min(cellCol+1,9); j++) {
+          if (map.rows[i].cells[j].getAttribute("hasBomb") === "true") bombCount++;
         }
       }
+      cell.innerHTML = bombCount > 0 ? bombCount : `<td hasbomb="false" id="invisible">${bombCount}</td>`;
+       { 
+          if (bombCount === 0) { 
+          for (let i = Math.max(cellRow-1,0); i <= Math.min(cellRow+1,9); i++) {
+              for(let j = Math.max(cellCol-1,0); j <= Math.min(cellCol+1,9); j++) {
+              if (map.rows[i].cells[j].innerHTML === "") cellChoice(map.rows[i].cells[j]);
+                  }
+              }
+          }
+      }
+      isGameOver();
     }
-    checkLevelCompletion();
+  }
+
+function isGameOver() {
+  let noMoreMoves = true;
+    for (let i = 0; i < 10; i++) {
+      for(let j = 0; j < 10; j++) {
+        if ((map.rows[i].cells[j].getAttribute("hasBomb") === "false") && (map.rows[i].cells[j].innerHTML === "")) noMoreMoves = false;
+      }
+  }
+  if (noMoreMoves) {
+    let win = document.getElementById('win_loss');
+    win.innerHTML = "* NOICE!!! *</br>You Beat the System!!!";
+    displayBombs();
   }
 }
-    // on click, check if hasMine is truthy, if false, reveal cell. if value is 0, check for cells in circle through recursion.
-    //display number of mines in viciinity of reveraled cells.
-    //set barrier for map
 
 
-// function gameOver() {
-//     if (hasMine.includes('true');
-//     return "GaMe oVEr!"
-//     } else {
-
-//     }
-// }
-    
+init();
