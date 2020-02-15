@@ -41,8 +41,8 @@ h1{
   font-weight: bold;
   background: #91e;
   border: 1px solid #FF8504;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   text-align: center;
 }
 
@@ -74,4 +74,10 @@ button {
 #win_loss {
   font-size: 100px;
   font-family: 'Righteous', cursive;
+}
+
+.picked {
+  background: inherit;
+  background-clip: text;
+  filter: invert(1);
 }
