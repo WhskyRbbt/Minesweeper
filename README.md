@@ -27,7 +27,7 @@ thus allowing you to avoid being *'SPLODED!*
 
 #  In memory of the late Kobe Bryant, I dedicated my design to the Black Mamba, himself. RIP
 
-  Check out the game so far... [HERE, RIGHT HERE!!!](https://whskyrbbt.github.io/Project-1/)
+  Check out the game so far... [HERE, RIGHT HERE!!!](https://whskyrbbt.github.io/Minesweeper/)
 
 Future itterations will hopefully include: 
   A win overlay that shows random pic of Kobe highlights.
